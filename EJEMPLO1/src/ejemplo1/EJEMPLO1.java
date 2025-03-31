@@ -1,20 +1,28 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package ejemplo1;
 
-/**
- *
- * @author Blade
- */
-public class EJEMPLO1 {
+import java.util.Scanner;
 
-    /**
-     * @param args the command line arguments
-     */
+public class EJEMPLO1 {
     public static void main(String[] args) {
-        // TODO code application logic here
+        Scanner teclado = new Scanner(System.in);
+        int s = teclado.nextInt();
+        String n = teclado.next();
+        String[] notas = {"DO","DO#","RE","RE#","MI","FA","FA#","SOL","SOL#","LA","LA#","SI"};
+        int aux=0;
+        for(int i = 0; i < 12 ;i++){
+            if(n.equals(notas[i])){
+                aux = i - s;
+                if(aux<0){
+                    aux = 12 + aux;
+                    break;
+                }
+                else{
+                    break;
+                }
+            }
+        }
+        System.out.println(notas[aux]);
     }
     
 }
