@@ -15,6 +15,11 @@ public class EJEMPLO1 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Scanner teclado = new Scanner(System.in);
+        String cadena[] = {"do","do#","re","re#","mi","fa","fa#","sol","sol","la","la#","si"};
+        int nota = teclado.next();
+        
+        
     }
     
 }
