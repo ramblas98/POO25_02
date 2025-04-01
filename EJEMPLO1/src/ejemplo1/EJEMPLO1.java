@@ -1,20 +1,40 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package ejemplo1;
 
-/**
- *
- * @author alexj
- */
+import java.util.Scanner;
+
 public class EJEMPLO1 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+      
+    Scanner teclado = new Scanner(System.in);
+    
+    String[] notas = {"DO", "DO#", "RE", "RE#", "MI", "FA", "FA#", "SOL", "SOL#", "LA", "LA#", "SI"};
+    
+    System.out.println ("Ingrese Un Numero: ");
+    int S = teclado.nextInt ();
+    teclado.nextLine();
+    
+    System.out.println ("Ingrese La Nota: ");
+    String N = teclado.nextLine ();
+    
+    int index = -1;
+    
+    for (int i = 0; i < notas.length; i++) {
+            
+        if (notas[i].equals(N)) {
+                
+            index = i;
+            break;
+                
+        }
+    }
+
+    int realIndex = (index - S + 12) % 12;
+    
+    System.out.println("Nota: ");
+    
+    System.out.println(notas[realIndex]);
+    
     }
     
 }
