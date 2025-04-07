@@ -5,6 +5,7 @@ public class EJEMPLO1 {
         Scanner scanner = new Scanner(System.in);
         int s = scanner.nextInt();
         String n = scanner.next();
+        scanner.close();
         n = n.toUpperCase();
         String tonos[] = {"DO","DO#","RE","RE#","MI","FA","FA#","SOL","SOL#","LA","LA#","SI"};
         int tamanio = tonos.length;
