@@ -31,5 +31,6 @@ public class EJEMPLO1 {
         */
         int indexAux = (index - s  +tamanio) % tamanio;
         System.out.println(tonos[indexAux]);
+        scanner.close();
     }
 }
