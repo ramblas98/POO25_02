@@ -1,20 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package tp2_ej2;
-
-/**
- *
- * @author Alzab
- */
 public class TP2_EJ2 {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+      Complejo c1 = new Complejo();
+      c1.setReal(2);
+      c1.setImaginario(1);
+      System.out.print("(" + c1.getReal() + "," + c1.getImaginario() + "i)");
     }
     
 }
