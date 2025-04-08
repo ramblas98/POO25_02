@@ -1,21 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package tp2_ej3;
 
-/**
- *
- * @author alexj
- */
 public class Racional {
     
     private int num;
     private int den;
 
-    public Racional() {
-        
-        
+    public Racional() {  
         
     }
 
@@ -47,6 +38,43 @@ public class Racional {
     public void setDen(int den) {
         
         this.den = den;
+        
+    }
+
+    @Override
+    public String toString() {
+        
+        return "Numerador = " + num + ", Denominador = " + den;
+        
+    }
+    
+    public Racional Suma(Racional otro) {
+        
+        int nuevoDen = this.den * otro.den;
+        int nuevoNum = this.num * otro.den + otro.num * this.den;
+
+        return new Racional(nuevoNum, nuevoDen);
+    
+}
+    
+    public Racional Resta(Racional otro) {
+        
+        int nuevoDen = this.den * otro.den;
+        int nuevoNum = this.num * otro.den - otro.num * this.den;
+
+        return new Racional(nuevoNum, nuevoDen);
+    
+}
+
+    
+    static Racional Suma2(Racional R1, Racional R2) {
+        
+        int sumaNum = R1.num + R2.num;
+        int sumaDen = R1.den + R2.den;
+        
+        Racional nuevoSuma = new Racional(sumaNum, sumaDen);
+        
+        return nuevoSuma;
         
     }
     
