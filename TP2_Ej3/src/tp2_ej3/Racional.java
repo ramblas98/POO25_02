@@ -65,17 +65,18 @@ public class Racional implements Comparable<Racional>{
     
     public Racional simplificar(){
         Racional a = new Racional();
-        int max;
+        int max,i;
         if(this.numerador>this.denominador) max = this.numerador;
         else max = this.denominador;
         List <Integer> pri = gPrimos(max);
         while(this.numerador>1){
-            for(int i=0;i<pri.size();i++){
+            for(i=0;i<pri.size();i++){
                 if(this.numerador%pri.get(i)==0&&this.denominador%pri.get(i)==0){
                 this.numerador = this.numerador/pri.get(i);
                 this.denominador = this.denominador/pri.get(i);
                 }
             }
+            if(i==pri.size()) break;
         }
         a.denominador = this.denominador;
         a.numerador = this.numerador;
