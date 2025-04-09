@@ -1,5 +1,8 @@
 package tp2_ej3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Racional implements Comparable<Racional>{
     private int numerador;
     private int denominador;
@@ -62,34 +65,41 @@ public class Racional implements Comparable<Racional>{
     
     public Racional simplificar(){
         Racional a = new Racional();
-        while(this.denominador!=0){
-            if(this.numerador%2==0&&this.denominador%2==0){
-                this.numerador = this.numerador/2;
-                this.denominador = this.denominador/2;
-            }
-            else{
-                if(this.numerador%3==0&&this.denominador%3==0){
-                    this.numerador = this.numerador/3;
-                    this.denominador = this.denominador/3;
-                }
-                else{
-                    if(this.numerador%5==0&&this.denominador%5==0){
-                        this.numerador = this.numerador/5;
-                        this.denominador = this.denominador/5;
-                    }
-                    else{
-                        if(this.numerador%7==0&&this.denominador%7==0){
-                           this.numerador = this.numerador/7;
-                           this.denominador = this.denominador/7; 
-                        }
-                        else break;
-                    }
+        int max;
+        if(this.numerador>this.denominador) max = this.numerador;
+        else max = this.denominador;
+        List <Integer> pri = gPrimos(max);
+        while(this.numerador>1){
+            for(int i=0;i<pri.size();i++){
+                if(this.numerador%pri.get(i)==0&&this.denominador%pri.get(i)==0){
+                this.numerador = this.numerador/pri.get(i);
+                this.denominador = this.denominador/pri.get(i);
                 }
             }
         }
         a.denominador = this.denominador;
         a.numerador = this.numerador;
         return a;
+    }
+    
+    public static List<Integer> gPrimos(int l){
+        List<Integer> primos = new ArrayList<>();
+        
+        for(int i= 2; i<l; i++){
+            if(esPrimo(i)) primos.add(i);
+        }
+        return primos;
+    }
+    
+    private static boolean esPrimo(int n){
+        if(n<2) return false;
+        if(n==2) return true;
+        if(n%2==0) return false;
+        
+        for(int i=3; i*i <= n; i+=2){
+            if(n%i == 0) return false;
+        }
+        return true;
     }
     
     public float aDecimal(){
