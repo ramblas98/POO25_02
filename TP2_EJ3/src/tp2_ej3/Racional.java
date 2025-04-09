@@ -31,6 +31,38 @@ public class Racional {
         this.denominador = denominador;
     }
    
-    public 
-  
+    public Racional sumar(Racional r){
+      Racional n;
+      n.denominador=this.denominador+r.denominador;
+      n.numerador=this.numerador+r.numerador;
+        
+      //  return this.numerador+r.numerador
+          return n;
+    }
+  public Racional restar(Racional r){
+      Racional n;
+      n.denominador=(this.denominador)-(r.denominador);
+      n.numerador=(this.numerador)-(r.numerador);
+      return n;     
+  }
 
+  public Racional multiplicar(Racional r ){
+      Racional n;
+      n.numerador=(this.numerador)*(r.numerador);
+      n.denominador=(this.denominador)*(r.denominador);
+      return n;
+  }
+  
+  public Racional dividir(Racional r){
+      
+      return
+  }
+  public Racional simplificar(Racional r){
+      
+      return
+  }
+  public Racional adecimal(Racional r){
+      
+      return
+  }
+}
