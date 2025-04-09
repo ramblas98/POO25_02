@@ -66,18 +66,180 @@ public class Racional {
     
 }
 
-    
-    static Racional Suma2(Racional R1, Racional R2) {
+    public Racional Multiplicar(Racional otro) {
         
-        int sumaNum = R1.num + R2.num;
-        int sumaDen = R1.den + R2.den;
+        int nuevoDen = this.den * otro.den;
+        int nuevoNum = this.num * otro.num;
         
-        Racional nuevoSuma = new Racional(sumaNum, sumaDen);
-        
-        return nuevoSuma;
+        return new Racional(nuevoNum, nuevoDen);
         
     }
     
+    public Racional Dividir(Racional otro) {
+        
+        int nuevoNum = this.num * otro.num;
+        int nuevoDen = this.den * otro.den;
+        
+        return new Racional(nuevoNum, nuevoDen);
+        
+    }
     
+    public Racional Simplificar() {
+        
+        int i = 2;
+        int nuevoNum = 0;
+        int nuevoDen= 0;
+        
+        while (i <= this.num) {
+            
+            if (this.num % i == 0 && this.den % i == 0) {
+                
+                nuevoNum = this.num / i;
+                nuevoDen = this.den / i;
+                
+                i = 2;
+                
+            } else {
+                
+                i++;
+                
+            }
+            
+        }
+               
+        return new Racional(nuevoNum, nuevoDen);
+        
+    }
+    
+    public double aDecimal() {
+        
+        double dec = this.num / this.den;
+        
+        return dec;
+        
+    } 
+
+    @Override
+    public int hashCode() {
+        
+        int hash = 3;
+        hash = 31 * hash + this.num;
+        hash = 31 * hash + this.den;
+        return hash;
+        
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Racional other = (Racional) obj;
+        if (this.num != other.num) {
+            return false;
+        }
+        return this.den == other.den;
+        
+    }
+    
+    public static Racional Suma(Racional R1, Racional R2) {
+        
+        int nuevoNum = R1.getNum() * R2.getDen() + R2.getNum() * R1.getDen();
+        int nuevoDen = R1.getDen() * R2.getDen();
+        
+        return new Racional(nuevoDen, nuevoNum);
+        
+    }
+    
+    public static Racional Resta(Racional R1, Racional R2) {
+        
+        int nuevoNum = R1.getNum() * R2.getDen() - R2.getNum() * R1.getDen();
+        int nuevoDen = R1.getDen() * R2.getDen();
+        
+        return new Racional(nuevoDen, nuevoNum);
+        
+    }
+    
+    public static Racional Multiplicar(Racional R1, Racional R2) {
+        
+        int nuevoNum = R1.getNum() * R2.getNum();
+        int nuevoDen = R1.getDen() * R2.getDen();
+        
+        return new Racional(nuevoDen, nuevoNum);
+        
+    }
+    
+    public static Racional Dividir(Racional R1, Racional R2) {
+        
+        int nuevoNum = R1.getNum() * R2.getDen();
+        int nuevoDen = R1.getDen() + R2.getNum();
+        
+        return new Racional(nuevoDen, nuevoNum);
+        
+    }
+    
+    public static int MCD(int a, int b) {
+        
+        int[] divA = new int[a];
+        int[] divB = new int[b];
+        
+        int i = 1;
+        int j = 1;
+        int k = 0;
+        
+        while (i <= a) {
+            
+            if (a % i == 0) {
+                
+                divA[k] = i;
+                k++;
+                
+            }
+            
+            i++;
+            
+        }
+        
+        int cantA = k;
+        
+        k = 0;
+        
+        while (j <=b) {
+            
+            if (b % i == 0) {
+                
+                divB[k] = j;
+                k++;
+                
+            }
+            
+            j++;
+            
+        }
+        
+        int cantB = k;
+        
+        for (i=cantA; i<=0; i--) {
+            
+            for (j=cantB; j<=0; j--) {
+                
+                if (divA[i] == divB[j]) {
+                    
+                    return divA[i]; 
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
     
 }
