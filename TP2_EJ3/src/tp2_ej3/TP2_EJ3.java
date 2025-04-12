@@ -28,7 +28,7 @@ public class TP2_EJ3 {
         System.out.println("La suma de dos complejos es: "+z);
         
         z = x.restar(y);
-        System.out.println("La suma de dos complejos es: "+z);
+        System.out.println("La resta de dos complejos es: "+z);
         
         z = x.multiplicar(y);
         System.out.println("El producto de dos complejos es: "+z);
@@ -42,6 +42,13 @@ public class TP2_EJ3 {
         
         z = x.conjugado();
         System.out.println("El producto de dos complejos es: "+z);
+        
+        System.out.println(x.equals(y));
+        
+        System.out.println("La suma de dos complejos es: "+Complejo.sumar(x, y));
+        System.out.println("La resta de dos complejos es: "+Complejo.restar(x, y));
+        System.out.println("El producto de dos complejos es: "+Complejo.multiplicar(x, y));
+        System.out.println("La division de dos complejos es: "+Complejo.division(x, y));
     }
     
 }
