@@ -146,4 +146,19 @@ public class Complejo {
     public double argumento(){
         return Math.atan2(real, imaginario);
     }
+
+    public Complejo opuesto(){
+        return new Complejo(-real,-imaginario);
+    }
+
+    public Complejo potencia(int n){
+        double r = Modulo();
+        double theta = argumento();
+
+        // Fórmula de De Moivre: z^n = r^n * (cos(nθ) + i sin(nθ))
+        double rPotencia = Math.pow(r, n);
+        double nuevoReal = rPotencia * Math.cos(n * theta);
+        double nuevoImaginario = rPotencia * Math.sin(n * theta);
+        return new Complejo(nuevoReal,nuevoImaginario);
+    }
 }
