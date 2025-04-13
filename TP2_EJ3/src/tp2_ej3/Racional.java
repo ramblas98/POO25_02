@@ -44,7 +44,7 @@ public class Racional {
     @Override
     public String toString() {
         
-        return "Numerador = " + num + ", Denominador = " + den;
+        return this.num + "/" + this.den;
         
     }
     
@@ -87,16 +87,15 @@ public class Racional {
     public Racional Simplificar() {
         
         int i = 2;
-        int nuevoNum = 0;
-        int nuevoDen= 0;
+        int nuevoNum = this.num;
+        int nuevoDen= this.den;
         
-        while (i <= this.num) {
+        while (i <= Math.min(nuevoNum, nuevoDen)) {
             
-            if (this.num % i == 0 && this.den % i == 0) {
+            if (nuevoNum % i == 0 && nuevoDen % i == 0) {
                 
-                nuevoNum = this.num / i;
-                nuevoDen = this.den / i;
-                
+                nuevoNum = nuevoNum / i;
+                nuevoDen = nuevoDen / i;
                 i = 2;
                 
             } else {
@@ -106,8 +105,8 @@ public class Racional {
             }
             
         }
-               
-        return new Racional(nuevoNum, nuevoDen);
+
+    return new Racional(nuevoNum, nuevoDen);
         
     }
     
@@ -154,7 +153,7 @@ public class Racional {
         int nuevoNum = R1.getNum() * R2.getDen() + R2.getNum() * R1.getDen();
         int nuevoDen = R1.getDen() * R2.getDen();
         
-        return new Racional(nuevoDen, nuevoNum);
+        return new Racional(nuevoNum, nuevoDen);
         
     }
     
@@ -163,7 +162,7 @@ public class Racional {
         int nuevoNum = R1.getNum() * R2.getDen() - R2.getNum() * R1.getDen();
         int nuevoDen = R1.getDen() * R2.getDen();
         
-        return new Racional(nuevoDen, nuevoNum);
+        return new Racional(nuevoNum, nuevoDen);
         
     }
     
@@ -172,7 +171,7 @@ public class Racional {
         int nuevoNum = R1.getNum() * R2.getNum();
         int nuevoDen = R1.getDen() * R2.getDen();
         
-        return new Racional(nuevoDen, nuevoNum);
+        return new Racional(nuevoNum, nuevoDen);
         
     }
     
@@ -181,7 +180,7 @@ public class Racional {
         int nuevoNum = R1.getNum() * R2.getDen();
         int nuevoDen = R1.getDen() + R2.getNum();
         
-        return new Racional(nuevoDen, nuevoNum);
+        return new Racional(nuevoNum, nuevoDen);
         
     }
     
@@ -213,7 +212,7 @@ public class Racional {
         
         while (j <=b) {
             
-            if (b % i == 0) {
+            if (b % j == 0) {
                 
                 divB[k] = j;
                 k++;
@@ -226,19 +225,21 @@ public class Racional {
         
         int cantB = k;
         
-        for (i=cantA; i<=0; i--) {
+        for (i=cantA-1; i>=0; i--) {
             
-            for (j=cantB; j<=0; j--) {
+            for (j=cantB-1; j>=0; j--) {
                 
                 if (divA[i] == divB[j]) {
                     
-                    return divA[i]; 
+                    return divA[i];
                     
                 }
                 
             }
             
         }
+        
+        return 1;
         
     }
     
