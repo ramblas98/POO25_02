@@ -1,9 +1,9 @@
-
 package tp2_ej2;
 
 public class Complejo {
     private double real;
     private double imaginario;
+    
 
     /*
      * Constructor
@@ -125,8 +125,25 @@ public class Complejo {
         return modulo;
     }
     
-    public boolean equals(Object obj){
-        
-        return true;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Complejo other = (Complejo) obj;
+        if (this.real != other.real) {
+            return false;
+        }
+        return Double.doubleToLongBits(this.imaginario) == Double.doubleToLongBits(other.imaginario);
+    }
+    
+    public double argumento(){
+        return Math.atan2(real, imaginario);
     }
 }
