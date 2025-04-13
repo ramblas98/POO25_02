@@ -5,10 +5,21 @@ public class TP2_EJ2 {
       // c1.setReal(2);
       // c1.setImaginario(1);
       // System.out.print("(" + c1.getReal() + "," + c1.getImaginario() + "i)");
-      Complejo z1 = new Complejo(3,4);
+      //Complejo z1 = new Complejo(3,4);
       // System.out.println(z1.Modulo());
 
-      System.out.print(z1.Conjugado());
+      //System.out.print(z1.Conjugado());
+
+      Complejo z = new Complejo(1, 2);
+      //System.out.println("Número complejo: " + z);
+      //System.out.println("Argumento en radianes: " + z.argumento());
+
+      Complejo y = new Complejo(2,3);
+
+      // System.out.print(z.equals(y));
+
+      System.out.println(z.dividir(y));
+
     }
     
 }
