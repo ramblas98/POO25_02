@@ -4,6 +4,8 @@
  */
 package tp2_ej5;
 
+import java.util.Scanner;
+
 /**
  *
  * @author nicor
@@ -24,7 +26,7 @@ public class TP2_EJ5 {
         opc = 1;
         
         while(opc!=0){
-            lista[n] = Estudiante.nuevo();
+            lista[n] = Estudiante.nuevoConDato();
             n++;
             
             System.out.println("1- Ingreasr otro estudiante");
@@ -35,8 +37,8 @@ public class TP2_EJ5 {
         
         System.out.println("Estudiantes regulares:");
         for(i=0; i<n; i++){
-          if(lista[i].regular()){
-              System.out.println(lista[i]);
+          if(lista[i].regular(lista[i].getNotaP1(), lista[i].getNotaP2(), lista[i].getNotaR(), lista[i].getAsistencia())){
+              System.out.println(lista[i].getApellido() + lista[i].getNombre());
           }
         }
     }
