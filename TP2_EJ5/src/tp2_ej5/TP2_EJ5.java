@@ -38,7 +38,7 @@ public class TP2_EJ5 {
         System.out.println("Estudiantes regulares:");
         for(i=0; i<n; i++){
           if(lista[i].regular(lista[i].getNotaP1(), lista[i].getNotaP2(), lista[i].getNotaR(), lista[i].getAsistencia())){
-              System.out.println(lista[i].getApellido() + lista[i].getNombre());
+              System.out.println(lista[i].getApellido() + " " + lista[i].getNombre());
           }
         }
     }

@@ -121,7 +121,7 @@ public class Estudiante {
     }
     
     static boolean regular(int P1, int P2, int R, int asiste){
-        if(porAsistencia(asiste, 28) >= 80){
+        if(asiste >= 80){
             if(P1 >= 60 && P2 >= 60){
                 return true;
             }else if(R >= 60 && (P1>=60 || P2>=60)){
