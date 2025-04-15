@@ -1,0 +1,18 @@
+# Archivos del sistema (macOS) 
+.DS_Store 
+
+# NetBeans 
+nbproject/private/ 
+build/ 
+dist/ 
+
+# IntelliJ 
+.idea/ 
+*.iml 
+out/ 
+
+# Archivos compilados 
+*.class 
+
+# Otros 
+*.log
