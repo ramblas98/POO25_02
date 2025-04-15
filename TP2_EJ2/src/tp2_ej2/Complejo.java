@@ -3,8 +3,6 @@ package tp2_ej2;
 public class Complejo {
     private double real;
     private double imaginario;
-    
-
     /*
      * Constructor
      */
@@ -35,8 +33,6 @@ public class Complejo {
     public void setImaginario(double imaginario){
         this.imaginario = imaginario;
     }
-
-
     /*
      * METODOS ESTATICOS
      */
@@ -76,7 +72,7 @@ public class Complejo {
     }
 
     /*
-     * METODOS
+     * METODOS DE LA CLASE COMPLEJO
      */
 
     @Override
@@ -140,7 +136,7 @@ public class Complejo {
         if (this.real != other.real) {
             return false;
         }
-        return Double.doubleToLongBits(this.imaginario) == Double.doubleToLongBits(other.imaginario);
+        return (this.imaginario) == (other.imaginario);
     }
     
     public double argumento(){
@@ -155,7 +151,7 @@ public class Complejo {
         double r = Modulo();
         double theta = argumento();
 
-        // Fórmula de De Moivre: z^n = r^n * (cos(nθ) + i sin(nθ))
+        // Fórmula De Moivre: z^n = r^n * (cos(nθ) + i sin(nθ))
         double rPotencia = Math.pow(r, n);
         double nuevoReal = rPotencia * Math.cos(n * theta);
         double nuevoImaginario = rPotencia * Math.sin(n * theta);
