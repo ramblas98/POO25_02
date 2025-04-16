@@ -38,7 +38,7 @@ public class Racional implements Comparable<Racional>{
     public void sumarOtro(Racional otro){
         int dr;
         int nr;
-        dr = mcd(this.denominador,otro.denominador);
+        dr = mcm(this.denominador,otro.denominador);
         nr = (this.numerador * (dr / this.denominador) + otro.numerador * (dr / otro.denominador));
         this.numerador = nr;
         this.denominador = dr;
@@ -47,7 +47,7 @@ public class Racional implements Comparable<Racional>{
     public void restarOtro(Racional otro){
         int dr;
         int nr;
-        dr = mcd(this.denominador,otro.denominador);
+        dr = mcm(this.denominador,otro.denominador);
         nr = (this.numerador * (dr / this.denominador) - otro.numerador * (dr / otro.denominador));
         this.numerador = nr;
         this.denominador = dr;
@@ -174,10 +174,18 @@ public class Racional implements Comparable<Racional>{
         return a;
     }
     
-    private static int mcd(int a,int b){
+    private static int mcm(int a,int b){
         if(a % b == 0) return a;
         else if(b % a == 0) return b;
              else return a*b;
     }
 
+    private static int mcd(int a,int b){
+        while(b!=0){
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
 }
