@@ -112,7 +112,7 @@ public class Racional {
     
     public double aDecimal() {
         
-        double dec = this.num / this.den;
+        double dec = (double)this.num / (double)this.den;
         
         return dec;
         
@@ -134,16 +134,21 @@ public class Racional {
         if (this == obj) {
             return true;
         }
+        
         if (obj == null) {
             return false;
         }
+        
         if (getClass() != obj.getClass()) {
             return false;
         }
+        
         final Racional other = (Racional) obj;
+        
         if (this.num != other.num) {
             return false;
         }
+        
         return this.den == other.den;
         
     }

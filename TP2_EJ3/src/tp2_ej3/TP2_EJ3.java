@@ -8,155 +8,43 @@ public class TP2_EJ3 {
     public static void main(String[] args) {
         
         Scanner teclado = new Scanner(System.in);
+        Racional r1 = new Racional();
+        Racional r2 = new Racional();
+        int op;
         
-        Racional R1 = new Racional();
-        
-        System.out.println("Numeros Ingresados: ");
-        
-        R1.setNum(8);
-        R1.setDen(2);
-        
-        System.out.println(R1);
-        
-        System.out.println("\n===========================================================\n");
-        
-        System.out.println("Prueba de Los Puntos 7 y 8 (+Suma ; +Resta): \n");
-        
-        System.out.println("Ingrese Un Numerador: ");
-        int n = teclado.nextInt();
-        
-        System.out.println("\nIngrese Un Denominador: ");
-        int d = teclado.nextInt();
-        
-        Racional temp = new Racional();
-        
-        temp.setNum(n);
-        temp.setDen(d);
-               
-        Racional suma = R1.Suma(temp);
-        
-        System.out.println("Resultado de La Suma: " + suma);
-        
-        Racional resta = R1.Resta(temp);
-        
-        System.out.println("Resultado de La Resta: " + resta);
-        
-        System.out.println("\n===========================================================\n");
-        
-        System.out.println("Prueba de Los Puntos 7 y 8 (+Multiplicar ; +Dividir): \n");
-        
-        System.out.println("Ingrese Un Numerador: ");
-        n = teclado.nextInt();
-        
-        System.out.println("\nIngrese Un Denominador: ");
-        d = teclado.nextInt();
-               
-        temp.setNum(n);
-        temp.setDen(d);
-        
-        Racional multiplicacion = R1.Multiplicar(temp);
-        
-        System.out.println("Resultado de La Multipliacacion: " + multiplicacion);
-        
-        Racional division = R1.Dividir(temp);
-        
-        System.out.println("Resultado de La Division: " + division);
-        
-        System.out.println("\n===========================================================\n");
-        
-        System.out.println("Prueba de Los Puntos 9 y 10 (+Simplificar ; +Decimal)");
-        
-        Racional simplificacion = R1.Simplificar();
-        
-        System.out.println("Resultado de La Simplificacion: " + simplificacion);
-        
-        double decimal = R1.aDecimal();
-        
-        System.out.println("Resultado de La Comversion a Decimal: " + decimal);
-        
-        System.out.println("\n===========================================================\n");
-        
-        System.out.println("Prueba de Los Puntos 12 y 13 (+Equals ; +CompareTo)");
-        
-        System.out.println("Ingrese Un Numerador: ");
-        n = teclado.nextInt();
-        
-        System.out.println("\nIngrese Un Denominador: ");
-        d = teclado.nextInt();
-               
-        temp.setNum(n);
-        temp.setDen(d);
-        
-        System.out.println("Resultado del Equals: ");
-        
-        if (R1.equals(temp) == true) {
-            
-            System.out.println("Son Iguales");
-            
-        } else {
-            
-            System.out.println("Son Distintos");
-            
-        }
-        
-        System.out.println("\n===========================================================\n");
-        
-        System.out.println("Prueba de Los Puntos 14 y 15 (+Static Sumar ; +Static Restar)");
-        
-        System.out.println("Ingrese Un Numerador: ");
-        n = teclado.nextInt();
-        
-        System.out.println("\nIngrese Un Denominador: ");
-        d = teclado.nextInt();
-               
-        temp.setNum(n);
-        temp.setDen(d);
-        
-        suma = Racional.Suma(R1, temp);
-        
-        System.out.println("Resultado de La Suma: " + suma);
-        
-        resta = Racional.Resta(R1, temp);
-        
-        System.out.println("Resultado de La Resta: " + resta);
-        
-        System.out.println("\n===========================================================\n");
-        
-        System.out.println("Prueba de Los Puntos 16 y 17 (+Static Multiplicar ; +Static Dividir)");
-        
-        System.out.println("Ingrese Un Numerador: ");
-        n = teclado.nextInt();
-        
-        System.out.println("\nIngrese Un Denominador: ");
-        d = teclado.nextInt();
-               
-        temp.setNum(n);
-        temp.setDen(d);
-        
-        multiplicacion = Racional.Multiplicar(R1, temp);
-        
-        System.out.println("Resultado de La Multiplicacion: " + multiplicacion);
-        
-        division = Racional.Dividir(R1, temp);
-        
-        System.out.println("Resultado de La Division: " + division);
-        
-        System.out.println("\n===========================================================\n");
-        
-        System.out.println("Prueba Del Punto 18 (-Static MCD)");
-        
-        System.out.println("Ingrese Un Numerador: ");
-        n = teclado.nextInt();
-        
-        System.out.println("\nIngrese Un Denominador: ");
-        d = teclado.nextInt();
-               
-        int mcd = Racional.ObtenerMCD(n, d);
-        
-        System.out.println("Resultado de MCD: " + mcd);
-        
-        System.out.println("\n===========================================================\n");
-        
+        do{
+            System.out.println("-------------- MENU --------------\n");
+            System.out.println("1. Ingresar racionales\n2. Sumar\n3. Restar\n4. Multiplicar\n5. Dividir\n6. Operaciones con otro\n7. A decimal\n8. Comparar\n9. Cadena\n10. MCD\n\n\n0. SALIR\n");
+            System.out.println("Selecciona Opcion: ");
+            op = teclado.nextInt();
+            switch(op) {
+                
+                case 1 -> {
+                    System.out.println("Primer numerador: ");
+                    r1.setNum(teclado.nextInt());
+                    System.out.println("Primer denominador: ");
+                    r1.setDen(teclado.nextInt());
+                    System.out.println("Segundo numerador: ");
+                    r2.setNum(teclado.nextInt());
+                    System.out.println("Segundo denominador: ");
+                    r2.setDen(teclado.nextInt());
+                }
+                case 2 -> System.out.println(Racional.Suma(r1, r2).Simplificar());
+                case 3 -> System.out.println(Racional.Resta(r1, r2).Simplificar());
+                case 4 -> System.out.println(Racional.Multiplicar(r1, r2).Simplificar());
+                case 5 -> System.out.println(Racional.Dividir(r1, r2).Simplificar());
+                case 6 -> System.out.println("Suma: " + r1.Suma(r2).Simplificar() + "\nResta: " + r1.Resta(r2).Simplificar() + "\nMultiplicacion: " + r1.Multiplicar(r2).Simplificar() + "\nDivision: " + r1.Dividir(r2).Simplificar());
+                case 7 -> System.out.println("El Decimal de " + r1.getNum() + "/" + r1.getDen() + " es: " + r1.aDecimal() + "\nEl Decimal de " + r2.getNum() + "/" + r2.getDen() + " es: " + r2.aDecimal());
+                case 8 -> {
+                    if(r1.Simplificar().equals(r2.Simplificar())) System.out.println("Son iguales");
+                    else System.out.println("Son distintos");
+                }
+                case 9 -> System.out.println("r1: " + r1.toString() + "\nr2: " + r2.toString());
+                case 10 -> System.out.println("El mcd entre " + r1.toString() + " y " + r2.toString() + " es: " + Racional.ObtenerMCD(r1.getDen(),r1.getNum()));
+            }
+            new Scanner(System.in).nextLine();
+        }while(op!=0);
+  
     }
     
 }
