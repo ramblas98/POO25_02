@@ -56,7 +56,7 @@ public class Fecha {
         if(anio%4 == 0){
             return true;
         }else{
-            if(anio%400 == 0){
+            if(anio%400 == 0 && anio%100 == 0){
                 return true;
             }else{
                 return false;
@@ -73,7 +73,12 @@ public class Fecha {
     }
     
     void reiniciar(int dia, int mes, int anio){
+        this.anio = anio;
+        this.mes = mes;
+        this.dia = dia;
         
+        normalizar();
+             
     }
     
     static boolean valida(Fecha f2){
@@ -149,18 +154,90 @@ public class Fecha {
             }
         }
     }
+
+    public String toString() {
+        return  dia + "/" + mes + "/" + anio;
+    }
     
+    public void normalizar(){
+        while(dia > diaDelMes(mes, anio)){
+            dia = dia - diaDelMes(mes, anio);
+            mes++;
+            if(mes > 12){
+                mes = mes - 12;
+                anio++;
+            }
+        }
+    }
     
+    public int diaDelMes(int m, int a){
+        if(m==2){
+            if(esBiciesto(a) == true){
+                return 29;
+            }else{
+                return 28;
+            }
+        }else if(m==4 || m==6 || m==9 || m==11){
+            return 30;
+        }else{
+            return 31;
+        }
+    }
     
+    public Fecha clonar(){
+        return new Fecha(dia, mes, anio);
+    }
     
+    public int comparar(Fecha f2){
+        if(anio == f2.anio){
+            if(mes == f2.mes){
+                if(dia == f2.dia){
+                    return 0;
+                }else{
+                    if(dia > f2.dia){
+                        return 1;
+                    }else{
+                        return -1;
+                    }
+                }
+            }else{
+                if(mes > f2.mes){
+                    return 1;
+                }else{
+                    return -1;
+                }
+            }
+        }else{
+            if(anio > f2.anio){
+                return 1;
+            }else{
+                return -1;
+            }
+        }
+    }
     
+    public int diferenciaEnDias(Fecha f2){
+        return Math.abs(cantidadDeDias(this) - cantidadDeDias(f2));
+    }
     
-    
-    
-    
-    
-    
-    
+    public int cantidadDeDias(Fecha f){
+        int total;
+        total = f.anio * 365 + f.dia;
+        for(int mes=0; mes<f.mes; mes++){
+            if(f.mes==4 || f.mes==6 || f.mes==9 || f.mes==11){
+                total = total + 30;
+            }else if(f.mes==2){
+                if(esBiciesto(f.anio) == true){
+                    total = total + 29;
+                }else{
+                    total = total +28;
+                }
+            }else{
+                total = total + 31;
+            }
+        }
+        return total;
+    }
     
     
     
