@@ -1,7 +1,5 @@
 package tp2_ej3;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Racional implements Comparable<Racional>{
     private int numerador;
@@ -64,43 +62,7 @@ public class Racional implements Comparable<Racional>{
     }
     
     public Racional simplificar(){
-        Racional a = new Racional();
-        int max,i;
-        if(this.numerador>this.denominador) max = this.numerador;
-        else max = this.denominador;
-        List <Integer> pri = gPrimos(max);
-        while(this.numerador>1){
-            for(i=0;i<pri.size();i++){
-                if(this.numerador%pri.get(i)==0&&this.denominador%pri.get(i)==0){
-                this.numerador = this.numerador/pri.get(i);
-                this.denominador = this.denominador/pri.get(i);
-                }
-            }
-            if(i==pri.size()) break;
-        }
-        a.denominador = this.denominador;
-        a.numerador = this.numerador;
-        return a;
-    }
-    
-    public static List<Integer> gPrimos(int l){
-        List<Integer> primos = new ArrayList<>();
-        
-        for(int i= 2; i<l; i++){
-            if(esPrimo(i)) primos.add(i);
-        }
-        return primos;
-    }
-    
-    private static boolean esPrimo(int n){
-        if(n<2) return false;
-        if(n==2) return true;
-        if(n%2==0) return false;
-        
-        for(int i=3; i*i <= n; i+=2){
-            if(n%i == 0) return false;
-        }
-        return true;
+        return new Racional(this.numerador / mcd(this.numerador,this.denominador),this.denominador / mcd(this.numerador,this.denominador));
     }
     
     public float aDecimal(){
