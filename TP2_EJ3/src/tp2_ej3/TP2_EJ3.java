@@ -151,7 +151,7 @@ public class TP2_EJ3 {
         System.out.println("\nIngrese Un Denominador: ");
         d = teclado.nextInt();
                
-        int mcd = Racional.MCD(n, d);
+        int mcd = Racional.ObtenerMCD(n, d);
         
         System.out.println("Resultado de MCD: " + mcd);
         

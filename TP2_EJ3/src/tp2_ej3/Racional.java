@@ -184,7 +184,7 @@ public class Racional {
         
     }
     
-    public static int MCD(int a, int b) {
+    private static int MCD(int a, int b) {
         
         int[] divA = new int[a];
         int[] divB = new int[b];
@@ -241,6 +241,12 @@ public class Racional {
         
         return 1;
         
+    }
+
+    public static int ObtenerMCD(int a, int b) {
+
+        return MCD(a, b);
+
     }
     
 }
