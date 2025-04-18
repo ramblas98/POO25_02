@@ -111,23 +111,16 @@ public class Fecha {
         }
     }
     
-    void adelantar(int num){
+    void adelantar1(int num){
         if(this.mes < 12){
-            if(this.mes == 1 || this.mes==3 || this.mes==5 || this.mes==7 || this.mes==8 || this.mes==10){
-                if(this.dia+num <= 31){
-                    this.dia = this.dia+num;
-                }else{
-                    this.dia = num - (31 - this.dia);
-                    this.mes++;
-                }
-            }else if(this.mes == 4 || this.mes==6 || this.mes==9 || this.mes==11){
+            if(this.mes == 4 || this.mes==6 || this.mes==9 || this.mes==11){
                 if(this.dia+num <= 30){
                     this.dia = this.dia+num;
                 }else{
-                    this.dia = num - (31 - this.dia);
+                    this.dia = num - (30 - this.dia);
                     this.mes++;
                 }
-            }else{
+            }else if(this.mes == 2){
                 if(esBiciesto(this.anio) == true){
                     if(this.dia+num <=29){
                         this.dia = this.dia+num;
@@ -142,6 +135,13 @@ public class Fecha {
                         this.dia = num - (28 - this.dia);
                         this.mes++;
                     }
+                }                
+            }else{                
+                if(this.dia+num <= 31){
+                    this.dia = this.dia+num;
+                }else{
+                    this.dia = num - (31 - this.dia);
+                    this.mes++;
                 }
             }
         }else{
@@ -153,6 +153,13 @@ public class Fecha {
                 this.anio++;
             }
         }
+        
+        normalizar();
+    }
+    
+    void adelantar2(int num){
+        dia = dia + num;
+        normalizar();
     }
 
     public String toString() {

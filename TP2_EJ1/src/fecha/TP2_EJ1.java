@@ -19,7 +19,7 @@ public class TP2_EJ1 {
          Fecha f1 = new Fecha();
          f1.setDia(20);
          f1.setMes(12);
-         f1.setAnio(2028);
+         f1.setAnio(2080);
          
         System.out.println(f1.getDia() + "/" + f1.getMes() + "/" + f1.getAnio());
         
@@ -41,16 +41,16 @@ public class TP2_EJ1 {
             System.out.println("La fecha no es valida");
         }
         
-        f1.reiniciar(36, 6, 2025);
+        f1.reiniciar(1, 3, 2024);
         System.out.println(f1.getDia() + "/" + f1.getMes() + "/" + f1.getAnio());
         
-        f1.adelantar(20);
+        f1.adelantar2(61);
         System.out.println(f1.getDia() + "/" + f1.getMes() + "/" + f1.getAnio());
         
         Fecha otra = new Fecha();
-         otra.setDia(26);
-         otra.setMes(8);
-         otra.setAnio(2025);         
+         otra.setDia(1);
+         otra.setMes(1);
+         otra.setAnio(2025);
         if(f1.comparar(otra) == 0){
             System.out.println(f1.toString() + " es igual a " + otra.toString());
         }else if(f1.comparar(otra) == 1){
