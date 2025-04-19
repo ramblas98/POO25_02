@@ -118,11 +118,19 @@ public class Estudiante {
     @Override
     public String toString() {
         
-        return "Estudiante{" + "Apellidos = " + apellidos + ", Nombres = " + nombres + ", LU = " + lu + ", Gmail ="  + gmail + ", NotaP1 = " + notaP1 + ", notaP2 = " + notaP2 + ", notaR = " + notaR + ", asistencia = " + asistencia + '}';
-        
+         return """
+                ----------------------------------------
+                 Apellido/s       : """ + apellidos +
+           "\n Nombre/s         : " + nombres +
+           "\n LU               : " + lu +
+           "\n Gmail            : " + gmail +
+           "\n Nota Parcial 1   : " + notaP1 +
+           "\n Nota Parcial 2   : " + notaP2 +
+           "\n Nota Recuperatorio: " + notaR +
+           "\n Asistencia       : " + asistencia + " clases (" + Total(this) + "%)" +
+           "\n----------------------------------------";
+         
     }
-    
-    
 
     public void IngresarDatos() {
     
@@ -139,7 +147,8 @@ public class Estudiante {
         System.out.println("Ingrese El DNI: ");
         int dni = teclado.nextInt();
         setLu(dni);
-
+        teclado.nextLine();
+        
         System.out.println("Ingrese El Gmail: ");
         String gmails = teclado.nextLine();
         setGmail(gmails);
@@ -162,23 +171,15 @@ public class Estudiante {
 
     }
 
-    public boolean Regular(Estudiante otro) {
+    public boolean Regular() {
         
-        int total = Total(otro);
+        int total = Total(this);
         
-        if (otro.notaP1 >= 6 && otro.notaP2 >= 6 && total >= 80) {
+        if (this.notaP1 >= 60 && this.notaP2 >= 60 && total >= 80) {
 
             return true;
 
-        } else if (otro.notaR >= 6 && total >= 80) {
-        
-            return true;
-        
-        } else {
-            
-            return false;
-            
-        }
+        } else return this.notaR >= 60 && total >= 80;
 
     }
     
