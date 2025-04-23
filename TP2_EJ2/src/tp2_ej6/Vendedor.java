@@ -8,6 +8,16 @@ public class Vendedor {
     private double VentasMensuales[];
     private Persona datosPersonales;
     
+
+    public Vendedor(int legajo, String zonaVenta, float[] ventasMensuales,String apellido, String nombre, int dni){
+        this.legajo = legajo;
+        this.zonaVenta = zonaVenta;
+        VentasMensuales = new double[12];
+        Persona datos = new Persona();
+        datos.setApellidos(apellido);
+        datos.setNombres(nombre);
+        datos.setDni(dni);
+    }
     public Vendedor() {
     }
     public Vendedor(int legajo, String zonaVenta, float[] ventasMensuales, Persona datosPersonales) {
