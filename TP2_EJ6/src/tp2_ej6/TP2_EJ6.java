@@ -18,18 +18,14 @@ public class TP2_EJ6 {
      */
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
-       //Random random = new Random(); //crea una instancia de Random
-        
-        int i;
-        float vendio;
-        
+       
         Vendedor v1, v2, v3;
         
         v1 = new Vendedor(); // insertar ventas mensuales (en el constructor)
         v1.setLegajo(1000);
         v1.setZona("Oran");
         v1.setVentasMensuales(new float[12]); //inicializar el array
-        v1.agregarVenta2();
+        v1.agregarVenta();
         v1.setDatosPersonales(new Persona("Coronel", "Nicolas", 11111111));
         
         
@@ -53,7 +49,22 @@ public class TP2_EJ6 {
         System.out.println(v2.toString());
         System.out.println(v3.toString());
 
+        //---------------------------------------------------------------------------------------
         
+        Vendedor lista[] = new Vendedor[100];
+        
+        int i, n;
+        
+        System.out.println("Ingrese la cantidad de vendedores que desea cargar: ");
+        n = teclado.nextInt();
+        
+        for(i=0; i<n; i++){
+            lista[i] = Vendedor.nuevo();
+        }
+        
+        for(i=0; i<n; i++){
+            System.out.println(lista[i].toString());
+        }
         
         
         

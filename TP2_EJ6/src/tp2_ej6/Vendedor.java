@@ -72,13 +72,13 @@ public class Vendedor {
         
         System.out.println("Legajo: ");
         v2.legajo = teclado.nextInt();
-        teclado.nextInt();
+        teclado.nextLine();
         
         System.out.println("Zona: ");
         v2.zona = teclado.nextLine();
         
         v2.ventasMensuales = new float[12]; //inicializar el array
-        v2.agregarVenta2();
+        v2.agregarVenta();
         
         System.out.println("Datos persona: ");
         v2.datosPersonales = Persona.nuevo();
