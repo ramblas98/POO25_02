@@ -3,16 +3,6 @@ package tp2_ej7;
 
 public class Medico {
     
-    public enum Especialidad {
-        
-        FAMILIA,
-        TRAUMATOLOGIA,
-        PEDIATRIA,
-        INTERNISTA,
-        OTORRINO
-        
-    }
-    
     private String nombre;
     private int matricula;
     private Especialidad especialidad;
@@ -27,6 +17,20 @@ public class Medico {
         this.especialidad = especialidad;
         this.cupo = cupo;
         this.lista = lista;
+        
+    }
+    
+    public Medico(String nombre, int matricula, Especialidad especialidad) {
+        
+        this.nombre = nombre;
+        this.matricula = matricula;
+        this.especialidad = especialidad;
+        this.cupo = 10;
+        this.lista = new Historia[cupo];
+        
+    }
+    
+    public Medico() {
         
     }
 
@@ -84,6 +88,8 @@ public class Medico {
         
     }
     
+    
+    
     public boolean AgregarHistoria(Historia h) {
         
         if (Disponibilidad()) {
@@ -91,6 +97,7 @@ public class Medico {
             lista[cantHis] = h;
             cantHis++;
             h.AsignarMedico(this);
+            cupo--;
             return true;
             
         } else {
@@ -122,6 +129,25 @@ public class Medico {
         
     }
     
+    public void darAlta(Historia h) {
+        
+        if (h != null && this.BuscarHistoria(h)) {
+        
+            h.setAlta(true);
+            this.EliminarHistoria(h);
+            
+        }
+        
+    }
     
+    public boolean BuscarHistoria(Historia h) {
+    for (int i = 0; i < this.cantHis; i++) {
+        if (this.lista[i] == h) {
+            return true;
+        }
+    }
+    return false;
+}
+
     
 }

@@ -3,42 +3,30 @@ package tp2_ej7;
 
 public class Historia {
     
-    public enum Estado {
-        
-        GRAVE,
-        MEDIO,
-        LEVE
-        
-    }
-    
-    public enum Especialidad {
-        
-        FAMILIA,
-        TRAUMATOLOGIA,
-        PEDIATRIA,
-        INTERNISTA,
-        OTORRINO
-        
-    }
-    
-    private int identificador;
+    private static int cont = 1000;
+    private String nombre;
+    private int identificador = 0;
     private String codPaciente;
     private Estado estadoPaciente;
     private Especialidad especialidadMed;
     private Medico medicoAsig;
     private boolean alta;
 
-    public Historia(int identificador, String codPaciente, Estado estadoPaciente, Especialidad especialidadMed, Medico medicoAsig, boolean alta) {
+    public Historia(String nombre, String codPaciente, Estado estadoPaciente, Especialidad especialidadMed) {
         
-        this.identificador = identificador;
+        this.nombre = nombre;
+        this.identificador = CrearIden();
         this.codPaciente = codPaciente;
         this.estadoPaciente = estadoPaciente;
         this.especialidadMed = especialidadMed;
-        this.medicoAsig = medicoAsig;
         this.alta = false;
         
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+    
     public int getIdentificador() {
         return identificador;
     }
@@ -62,11 +50,11 @@ public class Historia {
     public boolean isAlta() {
         return alta;
     }
-    
-    
 
-    public void setIdentificador(int identificador) {
-        this.identificador = identificador;
+    
+    
+    public void setNombre(String nombree) {
+        this.nombre = nombree;
     }
 
     public void setCodPaciente(String codPaciente) {
@@ -89,25 +77,24 @@ public class Historia {
         this.alta = alta;
     }
     
-    public void darAlta() {
-        
-        if (medicoAsig != null && !alta) {
-            
-            alta = true;
-            medicoAsig.EliminarHistoria(this);
-            
-        }
-        
-    }
+
     
     public void AsignarMedico(Medico m) {
         
-        if (this.medicoAsig == null) {
+        if (this.medicoAsig == null && !this.alta) {
             
             this.medicoAsig = m;
             
         }
         
     }
+    
+    public static int CrearIden() {
+        
+        return cont++;
+        
+    }
+    
+    
     
 }
