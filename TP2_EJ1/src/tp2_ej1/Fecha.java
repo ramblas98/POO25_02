@@ -84,12 +84,27 @@ public class Fecha {
     
     private void normalizar(){
         if(!valida()){
-            //Si la fecha no es valida, hay que normalizar
+            //Normalizar mes
+            
             if(mes < 1){ //Si el mes que menor que 1, lo corregimos
+                //Si el mes es menor que 1, se ajusta el mes a 12
+                //y decrementa el año.
                 mes = 12;
+                anio--;
+                           
             }else if(mes > 12){ //Si mes es mayor que 12, lo corregimos
+                //Si el mes es mayor que 12, se ajusta el mes a 1 
+                //y aumenta el año.
                 mes = 1;
-            }else if(dia > maxDias){ //Si el dia es mayor que el maximo, lo corregimos
+                anio ++;       
+            }
+            
+            //Normalizar dia
+            
+            //Se llama al metodo "dias" para obtener el numero maximo
+            //de dias que tiene el mes
+            int maxDias = dias(mes);
+            if(dia > maxDias){ //Si el dia es mayor que el maximo, lo corregimos
                 dia = maxDias;
             }
             
