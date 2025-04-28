@@ -121,7 +121,9 @@ public class Medico {
                 }
                 
                 lista[cantHis - 1] = null;
-                cantHis = cantHis - 1;
+                cantHis--;
+                this.cupo++;
+                break;
                 
             }
             

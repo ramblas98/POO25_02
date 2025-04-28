@@ -45,7 +45,7 @@ public class TP2_EJ7 {
                  
              } else {
                  
-                 System.out.println("No hay médico disponible para " + h.getCodPaciente() + " (" + especialidad + ")");
+                 System.out.println("No Hay Médico Disponible para " + h.getCodPaciente() + " (" + especialidad + ")");
                  
              }
          }
