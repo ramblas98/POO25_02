@@ -29,7 +29,7 @@ public class TP2_Ej7 {
             if(equipoMedico.asignar(listaPacientes[i])){
                 System.out.println("Medico: " + listaPacientes[i].getMedicoAsignado().getNombre());
                 System.out.println("Paciente: " + listaPacientes[i].getCodigopaciente());
-                System.out.println("Numero de historia: " + listaPacientes[i].getId() + "\n------------");
+                System.out.println("Numero de historia: " + listaPacientes[i].getId() + "\n-----------");
             }
         }
         
