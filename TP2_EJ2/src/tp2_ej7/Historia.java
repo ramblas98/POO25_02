@@ -1,48 +1,54 @@
 package tp2_ej7;
 
 public class Historia {
-    private static int cont = 1;
-    private int id;
-    private final String CP;
-    private final String estado;
-    private final String especialidad;
+    private static int contador = 0;  //Atributo de clase
+    private int id; //Debe ser unico, consecutivo
+    private String codigo;
+    private Estado estado;
+    private Especialidad especialidad;
     private Medico medicoAsignado;
     private boolean altaPaciente;
 
-    
-    public Historia( String cP, String estado,String especialidad) {
-        this.id = cont++;
-        this.CP = cP;
-        this.especialidad = especialidad;
-        this.medicoAsignado = null;
+    public Historia(){
+        this.id = Historia.contador + 1;
+        Historia.contador++;
+    }
+
+    public Historia(String codigo, Estado estado, Especialidad especialidad){
+        this.codigo = codigo;
         this.estado = estado;
-        this.altaPaciente = false;
+        this.especialidad = especialidad;
+        this.id =  Historia.contador + 1;
+        Historia.contador++;
     }
 
-    public void asignarMedico(Medico m){
-        if(this.medicoAsignado == null){
-            this.medicoAsignado = m;
-        }
+    public String getCodigo(){
+        return codigo;
+    }
+    public Estado estado(){
+        return estado;
+    }
+    public int getId(){
+        return id;
+    }
+    public Especialidad getEspecialidad(){
+        return especialidad;
     }
 
-    public void darAlta(){
-        this.altaPaciente = true;
+    public boolean getAlta(){
+        return altaPaciente;
+    }
+
+    public Medico getMedico(){
+        return medicoAsignado;
+    }
+
+    public void setAlta(boolean alta){
+        this.altaPaciente = alta;
     }
 
 
-    public int getId() { return id; }
-    public void setMedicoAsignado(Medico medicoAsignado){this.medicoAsignado = medicoAsignado;}
-    public String getCP() { return CP; }
-    public String getEstado() { return estado; }
-    public String getEspecialidad() { return especialidad; }
-    public boolean tieneAlta() { return altaPaciente; }
-    public Medico getMedicoAsignado() { return medicoAsignado; }
-
-    @Override
-    public String toString() {
-        return "Historia [id=" + id + ", CP=" + CP + ", estado=" + estado +
-               ", especialidad=" + especialidad + ", medicoAsignado=" +
-               (medicoAsignado != null ? medicoAsignado.getNombre() : "No asignado") +
-               ", altaPaciente=" + altaPaciente + "]";
+    public void setMedicoAsignado(Medico medico){
+        this.medicoAsignado = medico;
     }
 }
