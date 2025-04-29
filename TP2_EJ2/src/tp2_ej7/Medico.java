@@ -47,7 +47,7 @@ public class Medico {
     }
     
     public int cantTurnosLibres(){
-        return misHistorias.size() - cupo;
+        return  cupo - misHistorias.size();
     }
     
 
@@ -83,6 +83,12 @@ public class Medico {
 
     public void agregarHistoria(Historia h){
         misHistorias.add(h);
+    }
+
+    @Override
+    public String toString() {
+        return "Medico [nombre=" + nombre + ", matricula=" + matricula + ", cupo=" + cupo + ", especialidad="
+                + especialidad + ", misHistorias=" + misHistorias + "]";
     }
     
 }
