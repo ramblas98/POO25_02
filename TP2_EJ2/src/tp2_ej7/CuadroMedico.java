@@ -1,36 +1,64 @@
 package tp2_ej7;
-
-import java.util.ArrayList;
 import java.util.List;
-
+import java.util.ArrayList;
 public class CuadroMedico {
-    private List<Medico> medicos;
+   private List <Medico> medicos = new ArrayList<>();
 
-    public CuadroMedico(){
-        this.medicos = new ArrayList<>();
+   public void insertar(Medico m){
+    medicos.add(m);
+   }
+
+   public void eliminar(Medico m){
+    medicos.remove(m);
+   }
+
+   /*
+    * 
+    */
+   //public boolean asignarMedicoHistoria(Historia h, Medico m){
+    /*
+     if( ( h.getEspecialidad() == m.getEspecialidad() ) && m.disponibilidad()){
+        m.agregarHistoria(h);
+        h.setMedicoAsignado(m);
+        return true;
+    }else{
+        return false;
     }
-
-    public void insertarMedico(Medico medico){
-        medicos.add(medico);
+     */
+    /*
+     *  if(h.getEspecialidad().equals(m.getEspecialidad()) && m.disponibilidad()){
+        m.agregarHistoria(h);
+        h.setMedicoAsignado(m);
+        return true;
+    }else{
+        return false;
     }
+     */
+   
+   //}
 
-    public void eliminarMedico(Medico medico){
-        medicos.remove(medico);
-    }
-
-    public Medico obtenerMedicoDisponible(String especialidad){
-        Medico disponible = null;
-        for (int i = 0; i < medicos.size(); i++) {
-            Medico actual = medicos.get(i);
-            if(actual.getEspecialidad().equalsIgnoreCase(especialidad)){
-                int pacientesAtendidos = actual.getHistorias() == null ?0 : actual.getHistorias().size();
-                if (pacientesAtendidos < actual.getCupo()) {
-                    if(disponible == null || pacientesAtendidos < disponible.getHistorias().size()){
-                        disponible = actual;
+   public Medico obtenerMedicoMasDisponible(Especialidad e){
+          int i = 0;
+          int pmay = -1;
+          int n = medicos.size();
+          boolean b = false;
+          while (i<n && b == false) {
+            if(medicos.get(i).getEspecialidad() == e && medicos.get(i).disponibilidad()){
+                if(pmay >= 0 && ( medicos.get(i).cantTurnosLibres() > medicos.get(pmay).cantTurnosLibres() ) ){
+                    pmay = i;
+                }else{
+                    if(pmay < 0){
+                        pmay = i;
                     }
                 }
+            }else{
+                i++;
             }
-        }
-        return disponible;
-    }
+          }
+          if(pmay >= 0){
+            return medicos.get(pmay);
+          }else{
+            return null;
+          }
+   }
 }
