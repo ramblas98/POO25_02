@@ -143,11 +143,17 @@ public class Medico {
     }
     
     public boolean BuscarHistoria(Historia h) {
+        
     for (int i = 0; i < this.cantHis; i++) {
+        
         if (this.lista[i] == h) {
+            
             return true;
+            
         }
+        
     }
+    
     return false;
 }
 
