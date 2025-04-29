@@ -25,7 +25,7 @@ public class Historia {
     public String getCodigo(){
         return codigo;
     }
-    public Estado estado(){
+    public Estado getEstado(){
         return estado;
     }
     public int getId(){
@@ -50,5 +50,11 @@ public class Historia {
 
     public void setMedicoAsignado(Medico medico){
         this.medicoAsignado = medico;
+    }
+
+    @Override
+    public String toString() {
+        return "Historia [id=" + id + ", codigo=" + codigo + ", estado=" + estado + ", especialidad=" + especialidad
+                + ", medicoAsignado=" + medicoAsignado + ", altaPaciente=" + altaPaciente + "]";
     }
 }
