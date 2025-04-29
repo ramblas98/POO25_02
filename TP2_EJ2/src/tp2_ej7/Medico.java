@@ -4,43 +4,86 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Medico {
-    private  final String nombre;
-    private final int matricula;
-    private final String especialidad;
+    
+    private String nombre;
+    private int matricula;
     private int cupo;
-    private final List<Historia> historias;
+    private Especialidad especialidad;
+    private List <Historia> misHistorias = new ArrayList<>();
 
-    public Medico(String nombre, int matricula, String especialidad, int cupo) {
+    public Medico(){
+    };
+
+    public Medico(String nombre, int matricula){
         this.nombre = nombre;
         this.matricula = matricula;
-        this.especialidad = (especialidad == null) ? "familia" : especialidad;
-        this.cupo = (cupo <= 0) ? 10 : cupo;
-        this.historias = new ArrayList<>();
-        
-    }
-    public Medico(String nombre, int matricula){
-        this(nombre, matricula, "familia", 10);
-    }
-    public boolean estaDisponible(){
-        return historias.size() < cupo;
+        this.cupo = 10;
+        this.especialidad = Especialidad.FAMILIA;
     }
 
-    public void agregarHistoria(Historia h){
-        if(estaDisponible()){
-            historias.add(h);
+    public Medico(String nombre, int matricula, Especialidad especialidad, int cupo){
+        this.nombre = nombre;
+        this.matricula = matricula;
+        this.especialidad = especialidad;
+        this.cupo = cupo;
+    }
+
+    public String getNombre(){
+        return nombre;
+    }
+
+    public int getMatricula(){
+        return matricula;
+    }
+
+    public Especialidad getEspecialidad(){
+        return especialidad;
+    }
+    public int getCupo(){
+        return cupo;
+    }
+    public boolean disponibilidad(){
+        return misHistorias.size() < cupo;
+    }
+    
+    public int cantTurnosLibres(){
+        return misHistorias.size() - cupo;
+    }
+    
+
+    /*
+     *  public void darAlta(Historia h){
+        if (misHistorias.contains(h)) {
+            h.setAlta(true);
+            misHistorias.remove(h);
         }
     }
-    public String getNombre() { return nombre; }
-    public int getMatricula() { return matricula; }
-    public String getEspecialidad() { return especialidad; }
-    public int getCupo() { return cupo; }
-    public void setCupo(int cupo) { this.cupo = cupo; }
-    public List<Historia> getHistorias() { return historias; }
-    @Override
-    public String toString() {
-        return "Medico [nombre=" + nombre + ", matricula=" + matricula + ", especialidad=" + especialidad + ", cupo="
-                + cupo + ", historias=" + historias + "]";
+     */
+
+    public void darAlta(int idH){
+        int i = 0;
+        boolean encontrado = false;
+        int n = misHistorias.size();
+        while (i< n && !encontrado) {
+            if(idH == misHistorias.get(i).getId()){
+                encontrado = true;
+            }else{
+                i++;
+            }
+        }
+        if(encontrado){
+            misHistorias.remove(i);
+        }
     }
    
     
+    public List<Historia> getHistorias(){
+        return misHistorias;
+    }
+
+    public void agregarHistoria(Historia h){
+        misHistorias.add(h);
+    }
+    
 }
+
