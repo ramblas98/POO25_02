@@ -51,9 +51,8 @@ public class CuadroMedico {
                         pmay = i;
                     }
                 }
-            }else{
-                i++;
             }
+            i++;
           }
           if(pmay >= 0){
             return medicos.get(pmay);
