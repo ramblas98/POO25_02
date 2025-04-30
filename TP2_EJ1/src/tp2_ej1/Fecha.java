@@ -139,8 +139,17 @@ public class Fecha {
         else{
             return false;
         }
+        
     }
     
+    @Override
+    public String toString(){
+        return String.format("%02d/%02d/%04d", dia, mes, anio);
+    }
+    
+    public Fecha clonar(){
+        return new Fecha(this.dia, this.mes, this.anio);
+    }
     
     
    
